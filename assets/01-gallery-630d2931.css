@@ -1,0 +1,1 @@
+.gallery{display:flex;max-width:1140px;max-height:696px;padding:24px 156px;margin-left:auto;margin-right:auto;flex-direction:column;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:24px}.gallery-item{max-width:1128px;height:200px;list-style:none}.gallery-image{width:360px;height:200px;flex-shrink:0}
