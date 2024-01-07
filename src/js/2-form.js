@@ -8,7 +8,7 @@ try {
     Array.from(form.elements).forEach(element => {
       const formValue = formInfo[element.name];
       if (formValue !== undefined) {
-        element.value = formValue;
+        element.value = formValue.trim();
       }
     });
   }
@@ -20,7 +20,7 @@ form.addEventListener('input', (() => {
   const formData = new FormData(form);
   const formObj = {};
   formData.forEach((value, key) => {
-    formObj[key] = value;
+    formObj[key] = value.trim();
   });
   localStorage.setItem(FORM_DATA_STORAGE, JSON.stringify(formObj));
 }));
@@ -30,7 +30,7 @@ form.addEventListener('submit', (event) => {
 
   let fieldsFilled = true;
   Array.from(form.elements).forEach(element => {
-    if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && element.value.trim() === '') {
+    if ((element.name === 'email' || element.name === 'message') && element.value.trim() === '') {
         fieldsFilled = false;     
     }
   });
