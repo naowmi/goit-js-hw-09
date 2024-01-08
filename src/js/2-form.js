@@ -13,14 +13,14 @@ try {
     });
   }
 } catch (e) {
-  console.error('Parse form error!');
+  console.error('Problems with data retrieval!');
 }
-
+const formObj = {};
 form.addEventListener('input', (() => {
-  const formData = new FormData(form);
-  const formObj = {};
-  formData.forEach((value, key) => {
-    formObj[key] = value.trim();
+  Array.from(form.elements).forEach(element => {
+    if (element.type !== "submit") {
+      formObj[element.name] = element.value.trim();
+    }
   });
   localStorage.setItem(FORM_DATA_STORAGE, JSON.stringify(formObj));
 }));
@@ -36,9 +36,9 @@ form.addEventListener('submit', (event) => {
   });
 
   if (!fieldsFilled) {
-    alert('Not all fields are filled in');
+    alert('Be sure to fill in all the fields');
   } else {
-    console.log(localStorage.getItem(FORM_DATA_STORAGE));
+    console.log(formObj);
     localStorage.removeItem(FORM_DATA_STORAGE);
     form.reset();
     

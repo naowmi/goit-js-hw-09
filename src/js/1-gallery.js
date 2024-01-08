@@ -77,7 +77,7 @@ container.innerHTML = images.reduce((html, image) => html + `
   </a>
 </li>`, "");
 
-let gallery = new simpleLightbox('.gallery a', {
+const gallery = new SimpleLightbox('.gallery a', {
     captionDelay: 250, captionsData: 'alt'
 })
 
